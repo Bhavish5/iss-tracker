@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISS Tracker</title>
+</head>
+<body>
+    <ul>
+        <li>{{data.time}}</li>
+        <li>{{data.latitude}}</li>
+        <li>{{data.longitude}}</li>
+    </ul>
+    <button onclick="Print()">Print</button>
+    <script>
+        let latitude = "{{data.latitude}}";
+        let longitude = "{{data.longitude}}";
+        console.log(latitude+" "+longitude);
+    </script>
+</body>
+</html>
