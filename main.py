@@ -20,14 +20,14 @@ def get_iss_data():
         "latitude": latitude,
         "longitude": longitude
     }
+
 def get_astronauts_data():
-    astronauts_url = "http://api.open-notify.org/astros.json"
-    astronauts_req = requests.get(astronauts_url)
-    astronauts_data = astronauts_req.json()
-    astronauts = {} 
-    for astronaut in astronauts_data["people"]:  # Iterate directly over astronauts_data
-        astronauts[astronaut["name"]] = astronaut["craft"]
-    return astronauts
+    astronaut_url = "http://api.open-notify.org/astros.json"
+    astronaut_req = requests.get(astronaut_url)
+    astronauts_data = astronaut_req.json()
+    #for ast in astronauts_data["people"]:
+        #print(ast["name"], ast["craft"])    
+    return astronauts_data
 
 
 scheduler = BackgroundScheduler()
@@ -38,8 +38,8 @@ scheduler.add_job(func=get_iss_data, trigger='interval', seconds=5)
 @app.route('/')
 def home():
     data = get_iss_data()
-    astronauts = get_astronauts_data()
-    return render_template('index.html', data=data, astronauts=astronauts)
+    astronauts_data = get_astronauts_data()
+    return render_template('index.html', data=data, astronauts_data=astronauts_data)
 
 if __name__ == "__main__":
     app.run(debug=True)
