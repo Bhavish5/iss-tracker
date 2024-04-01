@@ -1,4 +1,21 @@
+body{
+    background-color: lightblue;
+}
 #map {
     height: 400px;
     width: 100%;
+}
+h1, h2{
+    text-align: center;
+}
+.location-details, .astronaut-details{
+    width: 50%;
+    margin: 10px auto;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.footer{
+    text-align: center;
+    margin-top: 100px;
 }

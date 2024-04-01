@@ -10,20 +10,29 @@
 </head>
 
 <body>
-    <ul>
-        <li>{{data.time}}</li>
-        <li>{{data.latitude}}</li>
-        <li>{{data.longitude}}</li>
-    </ul>
-    <ul>
-        {%for ast in astronauts_data.people%}
-        <li>{{ast.name}} : {{ast.craft}}</li>
-        {%endfor%}
-    </ul>
+    <h1>International Space Station(ISS) Tracker</h1>
+    <div class="location-details">
+        <h2>Location Details:</h2>
+        <ul>
+            <li>{{data.time}}</li>
+            <li>Latitude: {{data.latitude}} {% if data.latitude > 0 %}N{% else %}S{% endif %}</li>
+            <li>Longitude: {{data.longitude}} {% if data.longitude > 0 %}E{% else %}W{% endif %}</li>
+        </ul>
+    </div>
+    <div class="astronaut-details">
+        <h2>Astronaut Details:</h2>
+        <ul>
+            {%for ast in astronauts_data.people%}
+            <li>{{ast.name}} : {{ast.craft}}</li>
+            {%endfor%}
+        </ul>
+    </div>
     <div id="map" data-latitude="{{data.latitude}}" data-longitude="{{data.longitude}}"></div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="static/script.js"></script>
-
+    <footer class="footer">
+        <p>&copy; 2024 ISS Tracker. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>

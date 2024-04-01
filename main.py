@@ -11,14 +11,14 @@ def get_iss_data():
     iss_data = req.json()
 
     raw_time = datetime.datetime.fromtimestamp(iss_data['timestamp'])
-    time = raw_time.strftime('%Y-%m-%d %H:%M:%S')
+    time = raw_time.strftime('Time: %H:%M:%S, Date: %Y-%m-%d')
     latitude = iss_data['iss_position']['latitude']
     longitude = iss_data['iss_position']['longitude']
 
     return {
         "time": time,
-        "latitude": latitude,
-        "longitude": longitude
+        "latitude": float(latitude),
+        "longitude": float(longitude)
     }
 
 def get_astronauts_data():
