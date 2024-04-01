@@ -1,6 +1,7 @@
 from flask import Flask, render_template 
 import requests
 import datetime
+from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
 
@@ -19,13 +20,26 @@ def get_iss_data():
         "latitude": latitude,
         "longitude": longitude
     }
+def get_astronauts_data():
+    astronauts_url = "http://api.open-notify.org/astros.json"
+    astronauts_req = requests.get(astronauts_url)
+    astronauts_data = astronauts_req.json()
+    astronauts = {} 
+    for astronaut in astronauts_data["people"]:  # Iterate directly over astronauts_data
+        astronauts[astronaut["name"]] = astronaut["craft"]
+    return astronauts
 
-data = get_iss_data()
 
-#print(time, latitude, longitude)
+scheduler = BackgroundScheduler()
+scheduler.start()
+scheduler.add_job(func=get_iss_data, trigger='interval', seconds=5)
+
+
 @app.route('/')
 def home():
-    return render_template('index.html', data=data)
+    data = get_iss_data()
+    astronauts = get_astronauts_data()
+    return render_template('index.html', data=data, astronauts=astronauts)
 
 if __name__ == "__main__":
     app.run(debug=True)
