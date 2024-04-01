@@ -1,5 +1,7 @@
-let latitude = "{{data.latitude}}";
-let longitude = "{{data.longitude}}";
+// script.js
+
+let latitude = document.getElementById("map").dataset.latitude;
+let longitude = document.getElementById("map").dataset.longitude;
 
 setTimeout(function () {
     window.location.reload();

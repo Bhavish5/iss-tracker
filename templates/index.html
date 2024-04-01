@@ -20,27 +20,10 @@
         <li>{{ast.name}} : {{ast.craft}}</li>
         {%endfor%}
     </ul>
-    <div id="map"></div>
+    <div id="map" data-latitude="{{data.latitude}}" data-longitude="{{data.longitude}}"></div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        let latitude = "{{data.latitude}}";
-        let longitude = "{{data.longitude}}";
+    <script src="static/script.js"></script>
 
-        setTimeout(function () {
-            window.location.reload();
-        }, 5000);
-
-        document.addEventListener('DOMContentLoaded', function () {
-            let coordinates = [latitude, longitude];
-            let map = L.map('map').setView(coordinates, 2);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            L.marker(coordinates).addTo(map);
-        });
-    </script>
 </body>
 
 </html>
