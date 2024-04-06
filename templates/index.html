@@ -23,7 +23,7 @@
         <h2>Astronaut Details:</h2>
         <ul>
             {%for ast in astronauts_data.people%}
-            <li>{{ast.name}} : {{ast.craft}}</li>
+            <li><strong><a href="http://www.google.com/search?q={{ast.name}}" id="ast-name" target="_blank">{{ast.name}}</a></strong> : {{ast.craft}}</li>
             {%endfor%}
         </ul>
     </div>

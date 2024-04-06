@@ -19,3 +19,11 @@ h1, h2{
     text-align: center;
     margin-top: 100px;
 }
+#ast-name{
+    font-style: italic;
+    text-decoration: none;
+    color: inherit;
+}
+#ast-name:hover{
+    color: green;
+}
