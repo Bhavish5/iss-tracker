@@ -17,9 +17,6 @@ To run this project locally, follow these steps:
 3. Run the Flask application by executing `python run.py`.
 4. Access the web application by navigating to `http://localhost:5000` in your web browser.
 
-## Deployment
-This project is deployed on [Azure](https://iss-tracker.azurewebsites.net/). You can access it [here](https://iss-tracker.azurewebsites.net/).
-
 ## Technologies Used
 - Python
 - Flask
